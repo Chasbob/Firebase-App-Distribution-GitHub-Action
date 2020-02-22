@@ -16,11 +16,9 @@ async function run() {
       testers: testers,
       releaseNotes: releaseNotes
     }).then(function () {
-      console.log('Rules have been deployed!')
     }).catch(function (err) {
       // handle error
       core.setFailed(err.message);
-      console.log(err)
     });
 
   } catch (error) {
