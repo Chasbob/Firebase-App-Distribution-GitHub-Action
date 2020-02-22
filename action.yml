@@ -1,13 +1,29 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Firebase App Distribution'
+description: 'GitHub Action that uploads artifacts to Firebase App Distribution'
+author: 'Charles de Freitas'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  appId:
+    description: 'App id can be found on the General Settings page'
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps 
-    description: 'The message to output'
+  token:
+    description: 'Upload token - see Firebase CLI Reference'
+    required: true
+  file:
+    description: 'Artifact to upload (.apk or .ipa)'
+    required: true
+  groups:
+    description: 'Distribution groups'
+    required: false
+  releaseNotes:
+    description: 'Release notes visible on release page'
+    required: false
+  debug:
+    description: 'Flag that can included to print verbose log output.'
+    required: false
+    default: false
+branding:
+  color: 'orange'
+  icon: 'send'
 runs:
   using: 'node12'
   main: 'dist/index.js'
