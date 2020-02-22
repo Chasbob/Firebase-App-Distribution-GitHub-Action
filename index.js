@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const client = require('firebase-tools');
+
 async function run() {
   try {
     const firebase_app_id = core.getInput('APPID');
@@ -18,6 +19,7 @@ async function run() {
       console.log('Rules have been deployed!')
     }).catch(function (err) {
       // handle error
+      core.setFailed(err.message);
       console.log(err)
     });
 
